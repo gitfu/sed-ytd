@@ -63,7 +63,10 @@ https://r2---sn-q4flrnel.googlevideo.com/videoplayback?mv=m&mt=1501985199&ms=au&
 ### play all available formats in mplayer 
 ```
 mplayer `sed-ytd.sh 'https://www.youtube.com/watch?v=7R8OQOjqN1A' `
+
 ```
+
+
 ```
 Playing: https://r5---sn-q4f7sn7d.googlevideo.com/videoplayback?ei=33qGWeGfEY7b-wW7z5-wBw&key=yt6&initcwndbps=768750&itag=22&ms=au&mt=1501985376&mv=m&dur=195.279&id=o-AFcvI-GoPVAsAznI8h_my7Nd7cIltkgWFSbSU8V_jXAX&sparams=dur%2Cei%2Cgcr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&pl=21&ip=108.84.24.168&mm=31&mn=sn-q4f7sn7d&lmt=1470991825435737&ratebypass=yes&expire=1502007103&mime=video%2Fmp4&requiressl=yes&source=youtube&gcr=us&ipbits=0&signature=1F3E3162829EF92975A847C6F667843B2AEA6F53.AD52CCCBAA54FB16A172253420542329EDC42416
  (+) Video --vid=1 (*) (h264 1280x720 29.970fps)
@@ -74,32 +77,41 @@ VO: [opengl] 1280x720 yuv420p
 
 
 ### Code Commentary:
-* she bang
 ```
 #!/bin/sh
 ```
 * pull url with curl 
+
 ```
 curl -s $1 \
-``
+```
 * use sed to trim the data
+
 ```
 | sed -e /'ytplayer.config = {'/!d \
 
 ```
-* replace  \u0026 and commans with newlines and remove back slashes
+* replace  \u0026 and commas with newlines and remove back slashes
+
 ```
 -e '/\\u0026/ s//\n/g' -e '/,/ s//\n/g' -e '/\\/ s///g' \
 ```
-* Since the newlines created new lines, I piped it to another sed process, if you know a better way, please tell me.
-*delete lines that do not contain 'itag'
+
+* Since the newlines created new lines, I piped it to another sed process, 
+if you know a better way, please tell me.
+
+* delete lines that do not contain 'itag'
+
 ```
 | sed -e /'itag'/!d \
 ```
+
 * Trim lines that dont start with "https" so they do
-`` `
+
+```
 -e '/.*https/ s//https/g' \
 ```
+
 * delete lines that don't start with "https"
 ```
 -e /'^https'/!d 
