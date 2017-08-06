@@ -17,7 +17,7 @@ YouTube Video Downloader Using  Sed  In A Five Line Shell Script
 ./sed-ytd.sh 'https://www.youtube.com/watch?v=7R8OQOjqN1A'
 ```
 
-Will dispklay all available download links
+Will display all available download links
 
 ```
 https://r5---sn-q4f7sn7d.googlevideo.com/videoplayback?pl=21&expire=1502006628&dur=195.279&ratebypass=yes&lmt=1470991825435737&mime=video%2Fmp4&initcwndbps=771250&gcr=us&id=o-ADrjfCQpNm_LX7zKhXbOULHa_RdWGSJGbFnw-nOakI37&ei=BHmGWbiFFsut_APkkrLQBQ&sparams=dur%2Cei%2Cgcr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&ip=108.84.24.168&source=youtube&mv=m&mt=1501984895&ms=au&mn=sn-q4f7sn7d&mm=31&key=yt6&requiressl=yes&itag=22&signature=944D3646D58123818851992328C5BB5DBF97BD5C.561BB17AEDF7C590FDB569E82F45C45307E3B1D9&ipbits=0
