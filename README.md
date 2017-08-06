@@ -116,7 +116,7 @@ if you know a better way, please tell me.
 ```
 -e /'^https'/!d 
 ```
-* replace pdrcent encodings
+* replace percent encodings
 ```
 -e '/+/ s///g' -e '/%/ s//\\x/g' \
 | xargs -0 printf "%b"
