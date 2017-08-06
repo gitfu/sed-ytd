@@ -71,3 +71,41 @@ Playing: https://r5---sn-q4f7sn7d.googlevideo.com/videoplayback?ei=33qGWeGfEY7b-
 AO: [pulse] 44100Hz stereo 2ch float
 VO: [opengl] 1280x720 yuv420p
 ```
+
+
+### Code Commentary:
+* she bang
+```
+#!/bin/sh
+```
+* pull url with curl 
+```
+curl -s $1 \
+``
+* use sed to trim the data
+```
+| sed -e /'ytplayer.config = {'/!d \
+
+```
+* replace  \u0026 and commans with newlines and remove back slashes
+```
+-e '/\\u0026/ s//\n/g' -e '/,/ s//\n/g' -e '/\\/ s///g' \
+```
+* Since the newlines created new lines, I piped it to another sed process, if you know a better way, please tell me.
+*delete lines that do not contain 'itag'
+```
+| sed -e /'itag'/!d \
+```
+* Trim lines that dont start with "https" so they do
+`` `
+-e '/.*https/ s//https/g' \
+```
+* delete lines that don't start with "https"
+```
+-e /'^https'/!d 
+```
+* replace pdrcent encodings
+```
+-e '/+/ s///g' -e '/%/ s//\\x/g' \
+| xargs -0 printf "%b"
+```
